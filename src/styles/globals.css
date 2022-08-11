@@ -4,7 +4,7 @@ body > div:first-child,
 div#__next,
 div#__next > div {
   height: 100%;
-  font-family: "Roboto", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 @tailwind base;
@@ -13,6 +13,6 @@ div#__next > div {
 
 @layer base {
   html {
-    font-family: "Nunito";
+    font-family: "Montserrat";
   }
 }

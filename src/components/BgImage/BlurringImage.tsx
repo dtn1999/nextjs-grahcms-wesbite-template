@@ -1,5 +1,4 @@
 import React from "react";
-import cn from "classnames";
 import Image, { ImageProps } from "next/image";
 import { useBase64BlurringImage } from "@app/hooks/useRandomImage";
 
