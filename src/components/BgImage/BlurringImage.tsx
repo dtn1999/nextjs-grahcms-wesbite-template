@@ -1,16 +1,18 @@
 import React from "react";
 import Image, { ImageProps } from "next/image";
 import { useBase64BlurringImage } from "@app/hooks/useRandomImage";
+import classNames from "classnames";
+import { BaseProps } from "@app/types";
 
-interface Props extends Omit<ImageProps, "src"> {
+interface Props extends BaseProps, Omit<ImageProps, "src"> {
   url: string;
 }
 
 const BlurringImage: React.FC<Props> = React.memo(({ ...props }) => {
-  const { url, layout, objectFit, ...rest } = props;
+  const { className, url, layout, objectFit, ...rest } = props;
   const imageProps = useBase64BlurringImage(url);
   return (
-    <React.Fragment>
+    <div className={classNames("relative h-full w-full", className)}>
       {imageProps && (
         <Image
           alt={imageProps.alt}
@@ -20,7 +22,7 @@ const BlurringImage: React.FC<Props> = React.memo(({ ...props }) => {
           placeholder={imageProps.blurDataURL ? "blur" : "empty"}
         />
       )}
-    </React.Fragment>
+    </div>
   );
 });
 export default BlurringImage;

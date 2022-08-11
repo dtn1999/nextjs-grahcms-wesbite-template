@@ -23,6 +23,9 @@ module.exports = {
       boxShadow: {
         button: "0 5px 25px 0 rgb(0 0 0 / 25%)",
       },
+      lineHeight: {
+        11: "48px"
+      }
     },
   },
   plugins: [],

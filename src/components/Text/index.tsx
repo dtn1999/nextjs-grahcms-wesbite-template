@@ -1,10 +1,19 @@
-import React from 'react'; 
-import cn from 'classnames';
+import React from "react";
+import cn from "classnames";
 
 interface Props {
-       value: string;
+  value: string;
+  color?: "primary" | "secondary";
 }
-const Text:React.FC<Props> = React.memo(({value}) => {
-     return <p className={cn('')}> {value}</p>
-})
-export default Text
+const Text: React.FC<Props> = React.memo(({ value, color }) => {
+  return (
+    <p
+      className={cn({
+        "text-primary": color === "primary",
+      })}
+    >
+      {value}
+    </p>
+  );
+});
+export default Text;
