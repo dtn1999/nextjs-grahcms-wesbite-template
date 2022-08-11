@@ -20,13 +20,13 @@ const Button: React.FC<Props> = React.memo(
     return (
       <div
         className={cn({
-          "min-h-[50px] min-w-[64px] border-2 px-8 py-4 outline-none lg:text-sm xl:text-base font-bold lowercase first-letter:uppercase cursor-pointer duration-700 group rounded-md hover:decoration-0":
+          "border px-5 py-3 leading-5 outline-none lg:text-sm xl:text-base font-normal uppercase first-letter:uppercase cursor-pointer duration-700 group hover:decoration-0 border-primary":
             true,
-          "bg-transparent hover:bg-white text-primary hover:text-primary-hover border border-primary hover:border-transparent hover:shadow-button":
+          "bg-transparent text-black hover:bg-primary hover:text-white hover:border-transparent":
             variant && variant === "Outline" && !disabled,
-          "bg-primary hover:bg-primary-dark text-white font-bold border-transparent hover:bg-primary-hover":
+          "bg-primary hover:bg-primary-dark text-white border-transparent hover:bg-primary-hover":
             variant === "Solid",
-          "bg-primary text-white font-bold opacity-50 cursor-not-allowed bg-transparent":
+          "opacity-50 cursor-not-allowed":
             disabled,
         })}
       >

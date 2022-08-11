@@ -3,11 +3,25 @@ import { NextPage } from "next";
 import cn from "classnames";
 import BackgroundImage from "@app/components/BgImage";
 import { useMeasure } from "react-use";
+import Button from "@app/components/Button";
 
 const PreviewPageComponent: NextPage<{}> = ({}) => {
   const [ref, { height, width }] = useMeasure<any>();
   return (
     <div ref={ref} className={cn("px-16")}>
+      <div className="mb-16 flex flex-col items-start">
+        <h1 className="mb-4 text-5xl capitalize">Button component</h1>
+        <div className="flex items-center space-x-8">
+          <Button variant="Outline">Outline Button </Button>
+          <Button variant="Solid">Solid Button </Button>
+          <Button variant="Outline" disabled>
+            Outline Disabled
+          </Button>
+          <Button variant="Solid" disabled>
+            Solid Disabled
+          </Button>
+        </div>
+      </div>
       <div className="flex flex-col items-start">
         <h1 className="mb-4 text-5xl capitalize">
           {" "}

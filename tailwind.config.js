@@ -15,13 +15,14 @@ module.exports = {
           light: "#33975D38",
           dark: "rgb(51, 111, 93)",
         },
+        black: "#161616",
       },
       borderColor: {
         md: "4px",
       },
       boxShadow: {
-        button: "0 5px 25px 0 rgb(0 0 0 / 25%)"
-      }
+        button: "0 5px 25px 0 rgb(0 0 0 / 25%)",
+      },
     },
   },
   plugins: [],
