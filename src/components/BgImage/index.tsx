@@ -12,7 +12,7 @@ interface Props extends BaseProps, TAsset, Pick<ImageProps, "blurDataURL"> {
 const BackgroundImage: React.FC<Props> = React.memo(
   ({ url, objectFit, blurDataURL }) => {
     return (
-      <div className={cn("absolute -z-10 inset-0")}>
+      <div className={cn("absolute -z-10 inset-0 bg-primary")}>
         <BlurringImage
           url={url}
           alt="background"

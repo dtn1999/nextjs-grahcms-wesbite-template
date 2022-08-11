@@ -9,16 +9,19 @@ interface Props extends BaseProps, Omit<ImageProps, "src"> {
 }
 
 const BlurringImage: React.FC<Props> = React.memo(({ ...props }) => {
-  const { className, url, layout, objectFit, ...rest } = props;
+  const { className, url} = props;
   const imageProps = useBase64BlurringImage(url);
+  const { layout, objectFit, width, height , ...rest} = (imageProps as ImageProps) || {};
   return (
     <div className={classNames("relative h-full w-full", className)}>
       {imageProps && (
         <Image
           alt={imageProps.alt}
-          layout={layout}
-          objectFit={objectFit}
-          {...imageProps}
+          layout={props.layout}
+          objectFit={props.objectFit}
+          width={props.width}
+          height={props.height}
+          {...rest}
           placeholder={imageProps.blurDataURL ? "blur" : "empty"}
         />
       )}
