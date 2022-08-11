@@ -1,0 +1,18 @@
+overwrite: true
+
+schema: "https://api-eu-central-1.hygraph.com/v2/cl5h3cb8y0pve01t5ask1eemi/master"
+
+documents: "src/lib/**/*.ts"
+
+generates:
+  src/types/graphql.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - typescript-react-query
+    config:
+      withHooks: true
+
+hooks:
+  afterAllFileWrite:
+    - eslint --fix
