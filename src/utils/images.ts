@@ -1,28 +1,31 @@
 import { TAsset } from "@app/types";
-import { UNSPLASH_TOKEN } from "./envVariables";
+import { PEXELS_TOKEN } from "./envVariables";
+import { createClient , ErrorResponse, Photo} from 'pexels';
+const client = createClient(PEXELS_TOKEN);
 
-export type  ImageSize =  "full" | "raw" | "regular" | "small" | "small_s3" | "thumb"
+export type PexelsImageSize = keyof Photo["src"]
 
-export async function getUnsplashRandomImage(size?:ImageSize):Promise<TAsset>{
-   const response = await (await fetch(`https://api.unsplash.com/photos/random/?client_id=${UNSPLASH_TOKEN}`)).json()
-   const {id, width, height, alt_description:alt,urls} = response
-   const url = urls[size  || "raw"]
-   return {
-     url ,
-     id, 
-     width,
-     height, 
-     alt  
-   }
-}
-
-export function getPicSumRandomImage(width:number, height:number):TAsset{
+export async function getRandomPexelsImage(size?:PexelsImageSize):Promise<TAsset>{
+  const result = await client.photos.random()
+  const error = (result as ErrorResponse).error;
   
-  return {
-    url: `https://picsum.photos/${width || 600}/${height || 600}` ,
-    id: "", 
-    width,
-    height, 
-    alt: ""  
+  if(error){
+    console.log("something when wrong")
+    alert(`Pexels responds with error in usePexelsRandomImage: ${error}`)
+    return {
+        width: 600,
+        height: 600,
+        url: "https://picsum.photos/600/600",
+        alt: "placeholder image",
+        size: 0
+    }
   }
+  
+  const {width, height, url, src, photographer} = (result as Photo);
+   return {
+    width,
+    height,
+    alt: `a photo by ${photographer}`,
+    url: (size && src[size]) || url,
+   }
 }
