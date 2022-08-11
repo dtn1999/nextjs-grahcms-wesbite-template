@@ -7,13 +7,13 @@ export type PexelsImageSize = keyof Photo["src"]
 
 export async function getBase64EncodingFromUri(uri:string){
   console.log("start fetching")
-  const {base64, imageProps} = await (
+  const imagesProps = await (
     await fetch("/api/getbase64FromUri", {
       method: "POST",
       body: JSON.stringify({ uri }),
     })
   ).json(); // wrote for demonstration
-  return imageProps
+  return imagesProps
 }
 
 
