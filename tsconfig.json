@@ -16,10 +16,23 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@/lib/*": ["src/lib/*"],
-      "@/requests/queries/*": ["src/lib/requests/*", "src/lib/requests/pages"],
-      "@/components/*": ["src/components/*"],
-      "@/features/*": ["src/features/*"]
+      "@app/lib": ["./src/lib"],
+      "@app/lib/*": ["./src/lib/*"],
+      "@app/requests-queries": ["./src/lib/requests/queries"],
+      "@app/requests-queries/*": ["./src/lib/requests/queries/*"],
+      "@app/requests-mutations/*": ["./src/lib/requests/queries/*"],
+      "@app/components": ["./src/components"],
+      "@app/components/*": ["./src/components/*"],
+      "@app/features": ["./src/features"],
+      "@app/features/*": ["./src/features/*"],
+      "@app/types": ["./src/types"],
+      "@app/types/*": ["./src/types/*"],
+      "@app/styles": ["./src/styles"],
+      "@app/styles/*": ["./src/styles/*"],
+      "@app/hooks": ["./src/hooks"],
+      "@app/hooks/*": ["./src/hooks/*"],
+      "@app/utils": ["./src/utils"],
+      "@app/utils/*": ["./src/utils/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

@@ -1,16 +1,17 @@
-import {createHygraphClient} from "./client"
-import {GET_LAYOUT_REQUEST} from "./requests/layout"
-import {PAGES_SLUG_REQUEST, PAGE_REQUEST } from "./requests/pages"
-import { PROJECTS_HOME_REQUEST } from "./requests/projects"
+import { GRAPHCMS_ENDPOINT, GRAPHCMS_TOKEN, GRAPHCMS_TOKEN_PREVIEW } from "@app/utils/envVariables"
+import {GraphQLClient, Variables} from "graphql-request"
 
-export {
-    createHygraphClient, 
-    /* Requests */
-    // layout
-    GET_LAYOUT_REQUEST, 
-    // page
-    PAGES_SLUG_REQUEST, 
-    PAGE_REQUEST, 
-    // projects
-    PROJECTS_HOME_REQUEST
+export const createHygraphClient = (preview:boolean) => {
+    return new GraphQLClient(GRAPHCMS_ENDPOINT, {
+        headers: {
+            Authorization: `Bearer ${preview ? GRAPHCMS_TOKEN_PREVIEW: GRAPHCMS_TOKEN}`
+        }
+    })
+}
+
+export const hygraph = createHygraphClient(false)
+
+export function fetcher(query:string, variables?:Variables){
+    console.log(query)
+   return hygraph.request(query, variables)
 }
