@@ -35,6 +35,6 @@
       "@app/utils/*": ["./src/utils/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/BgImage/Blu"],
   "exclude": ["node_modules"]
 }

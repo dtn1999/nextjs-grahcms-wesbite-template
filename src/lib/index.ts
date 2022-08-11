@@ -11,7 +11,7 @@ export const createHygraphClient = (preview:boolean) => {
 
 export const hygraph = createHygraphClient(false)
 
-export function fetcher(query:string, variables?:Variables){
+export function hygraphFetcher(query:string, variables?:Variables){
     console.log(query)
    return hygraph.request(query, variables)
 }

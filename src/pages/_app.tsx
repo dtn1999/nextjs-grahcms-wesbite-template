@@ -1,4 +1,4 @@
-import { createHygraphClient, fetcher } from "@app/lib";
+import { createHygraphClient, hygraphFetcher } from "@app/lib";
 import "@app/styles/globals.css";
 import request from "graphql-request";
 import type { AppContext, AppProps } from "next/app";
@@ -11,6 +11,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <SWRConfig
       value={{
+        fetcher: hygraphFetcher,
         suspense: true,
       }}
     >
@@ -19,16 +20,13 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-
 MyApp.getInitialProps = async (appContext: AppContext) => {
-const appProps = await App.getInitialProps(appContext);
-const { locale } = appContext.ctx;
-const hygraph = createHygraphClient(false);
-return {
-  ...appProps,
-  pageProps: {
-    
-  }
-}
-}
+  const appProps = await App.getInitialProps(appContext);
+  const { locale } = appContext.ctx;
+  const hygraph = createHygraphClient(false);
+  return {
+    ...appProps,
+    pageProps: {},
+  };
+};
 export default MyApp;
