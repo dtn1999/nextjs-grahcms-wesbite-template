@@ -7,14 +7,26 @@ import Button from "@app/components/Button";
 import Headline from "@app/components/Headline";
 import Text from "@app/components/Text";
 import BlurringImage from "@app/components/BgImage/BlurringImage";
-import Section from "@app/features/Section";
+import SectionImage from "@app/features/Section/SectionImage";
+import CountUp from "react-countup";
+import { BsChevronRight } from "react-icons/bs";
+
+import { AnimatePresence, motion } from "framer-motion";
+import Section from "@app/features/Section/Section";
+import SimpleSectionDescription from "@app/features/Section/SimpleSectionDescription";
+import TabsComponent from "@app/features/Tabs";
+import { Tab } from "@headlessui/react";
+import TabComponent from "@app/features/Tabs";
 
 const PreviewPageComponent: NextPage<{}> = ({}) => {
   const [ref, { height, width }] = useMeasure<any>();
+  const url =
+    "https://images.pexels.com/photos/12548883/pexels-photo-12548883.jpeg";
+  const imagePosition = "right";
   return (
-    <div ref={ref} className={cn("w-full h-screen overflow-x-hidden px-80")}>
-      <div className="w-full overflow-x-hidden px-4">
-        <div className="mb-16 flex flex-col items-start">
+    <div ref={ref} className={cn("w-full h-screen")}>
+      <div className="w-full overflow-x-hidden">
+        <div className="mb-16 flex flex-col items-start px-[340px]">
           <h1 className="mb-4 text-5xl capitalize">Button component</h1>
           <div className="flex items-center space-x-8">
             <Button variant="Outline">Outline Button </Button>
@@ -28,7 +40,7 @@ const PreviewPageComponent: NextPage<{}> = ({}) => {
           </div>
         </div>
 
-        <div className="mb-16 flex flex-col items-start">
+        <div className="mb-16 flex flex-col items-start px-[340px]">
           <h1 className="mb-4 text-5xl capitalize">Headline component</h1>
           <div className="flex flex-col items-start space-y-16 py-8">
             <Headline underline underlineAlign="center" className="mt-4">
@@ -51,7 +63,7 @@ const PreviewPageComponent: NextPage<{}> = ({}) => {
           </div>
         </div>
 
-        <div className="mb-16 flex flex-col items-start">
+        <div className="mb-16 flex flex-col items-start px-[340px]">
           <h1 className="mb-4 text-5xl capitalize">Section Image Component</h1>
           <div className="flex flex-col items-start space-y-16 py-8">
             <div className="relative flex h-[504px] w-[559px] items-start justify-start">
@@ -68,13 +80,57 @@ const PreviewPageComponent: NextPage<{}> = ({}) => {
             </div>
           </div>
         </div>
-        <div className="flex w-full flex-col">
+
+        <div className="flex w-full flex-col bg-[#F0F0F0] px-[340px]">
           <h1 className="mb-4 text-5xl capitalize">
             Feature: Section component
           </h1>
-          <Section url="https://images.pexels.com/photos/12604653/pexels-photo-12604653.jpeg" />
+
+          <Section
+            imagePosition="right"
+            url="https://images.pexels.com/photos/12548883/pexels-photo-12548883.jpeg"
+          >
+            <SimpleSectionDescription>
+              <Headline underline underlineAlign="left" className="mt-4">
+                <Text value="About us" />
+              </Headline>
+            </SimpleSectionDescription>
+          </Section>
+          <Section url="https://images.pexels.com/photos/12604653/pexels-photo-12604653.jpeg">
+            <SimpleSectionDescription>
+              <Headline underline underlineAlign="left" className="mt-4">
+                <Text value="We Are Novo " />
+                <Text value="Creative Studio." color="primary" />
+              </Headline>
+            </SimpleSectionDescription>
+          </Section>
+
+          <Section
+            key={Math.random()}
+            imagePosition="right"
+            url="https://images.pexels.com/photos/12548883/pexels-photo-12548883.jpeg"
+          >
+            <Headline underline underlineAlign="left" className="mt-4">
+              <Text value="About us" />
+            </Headline>
+            <TabComponent />
+          </Section>
         </div>
-        <div className="flex w-full flex-col">
+
+
+        <div className="flex w-full flex-col bg-[#F0F0F0] px-[340px]">
+          <Section
+            key={Math.random()}
+            imagePosition="right"
+            url="https://images.pexels.com/photos/12548883/pexels-photo-12548883.jpeg"
+          >
+            <Headline underline underlineAlign="left" className="mt-4">
+              <Text value="About us" />
+            </Headline>
+            <TabComponent />
+          </Section>
+        </div>
+        <div className="flex w-full flex-col px-[340px]">
           <h1 className="mb-4 text-5xl capitalize">
             Background Image component
           </h1>

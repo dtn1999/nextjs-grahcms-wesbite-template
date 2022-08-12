@@ -10,6 +10,7 @@ const SectionImage: React.FC<Props> = React.memo(({ children, ...props }) => {
   const { url } = props;
   return (
     <div className="relative flex h-[504px] w-[559px] items-start justify-start">
+        <div className="absolute inset-0 left-1 top-1 bg-primary"></div>
       <div className="relative h-fit w-fit">
         <BlurringImage
           url={url}
@@ -19,7 +20,6 @@ const SectionImage: React.FC<Props> = React.memo(({ children, ...props }) => {
           layout="fixed"
         />
       </div>
-      <div className="absolute inset-0 left-1 top-1 -z-20  bg-primary/30"></div>
     </div>
   );
 });

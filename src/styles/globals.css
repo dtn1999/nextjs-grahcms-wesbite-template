@@ -7,6 +7,13 @@ div#__next > div {
   font-family: "Montserrat", sans-serif;
 }
 
+.child {
+  flex: 2 0 21%; /* explanation below */
+  margin: 5px;
+  height: 100px;
+  background-color: blue;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
