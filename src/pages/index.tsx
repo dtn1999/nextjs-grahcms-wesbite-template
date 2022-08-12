@@ -1,7 +1,5 @@
 import React from "react";
 import type { NextPage } from "next";
-import ComponentSwitcher from "@app/components";
-import { gql } from "graphql-request";
 import { SWRConfig } from "swr";
 import Headline from "@app/components/Headline";
 import Text from "@app/components/Text";

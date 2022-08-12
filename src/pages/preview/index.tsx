@@ -11,12 +11,11 @@ import BlurringImage from "@app/components/BgImage/BlurringImage";
 import Section from "@app/features/Section";
 import TabComponent from "@app/features/Tabs";
 import SimpleSection from "@app/features/SimpleSection";
+import Accordion from "@app/features/Accordion";
+import LanguageToggle from "@app/features/Toggle";
 
 const PreviewPageComponent: NextPage<{}> = ({}) => {
-  const [ref, { height, width }] = useMeasure<any>();
-  const url =
-    "https://images.pexels.com/photos/12548883/pexels-photo-12548883.jpeg";
-  const imagePosition = "right";
+  const [ref, { height }] = useMeasure<any>();
   return (
     <div ref={ref} className={cn("w-full h-screen")}>
       <div className="w-full overflow-x-hidden">
@@ -37,23 +36,34 @@ const PreviewPageComponent: NextPage<{}> = ({}) => {
         <div className="mb-16 flex flex-col items-start px-[340px]">
           <h1 className="mb-4 text-5xl capitalize">Headline component</h1>
           <div className="flex flex-col items-start space-y-16 py-8">
-            <Headline underline underlineAlign="center" className="mt-4">
-              <Text value="Latest works" />
-            </Headline>
-            <Headline underline underlineAlign="center" className="mt-4">
-              <Text value="Latest" />
-              <Text value="works" color="primary" />
-            </Headline>
-            <div className="max-w-xl">
-              <Headline underline underlineAlign="left" className="mt-4">
-                <Text value="We Are Novo" />
-                <Text value="Creative Studio." color="primary" />
-              </Headline>
-            </div>
-            <Headline underline underlineAlign="center" className="mt-4">
-              <Text value="Our" />
-              <Text value="Team" color="primary" />
-            </Headline>
+            <Headline
+              underline
+              underlineAlign="center"
+              className="mt-4"
+              value={[
+                {
+                  id: "1_latest",
+                  value: "latest works",
+                },
+              ]}
+            />
+
+            <Headline
+              underline
+              underlineAlign="center"
+              className="mt-4"
+              value={[
+                {
+                  id: "OUR",
+                  value: "OUR",
+                },
+                {
+                  id: "team",
+                  value: "team",
+                  color: "primary",
+                },
+              ]}
+            />
           </div>
         </div>
 
@@ -85,17 +95,39 @@ const PreviewPageComponent: NextPage<{}> = ({}) => {
             url="https://images.pexels.com/photos/12548883/pexels-photo-12548883.jpeg"
           >
             <SimpleSection>
-              <Headline underline underlineAlign="left" className="mt-4">
-                <Text value="About us" />
-              </Headline>
+              <Headline
+                underline
+                underlineAlign="left"
+                className="mt-4"
+                value={[
+                  {
+                    id: "1_non_primary_about us",
+                    value: "about us",
+                  },
+                ]}
+              />
             </SimpleSection>
           </Section>
           <Section url="https://images.pexels.com/photos/12604653/pexels-photo-12604653.jpeg">
             <SimpleSection>
-              <Headline underline underlineAlign="left" className="mt-4">
-                <Text value="We Are Novo " />
-                <Text value="Creative Studio." color="primary" />
-              </Headline>
+              <div className="max-w-lg">
+                <Headline
+                  underline
+                  underlineAlign="left"
+                  className="mt-4"
+                  value={[
+                    {
+                      id: "We Are Novo ",
+                      value: "We Are Novo ",
+                    },
+                    {
+                      id: "Creative Studio.",
+                      value: "Creative Studio.",
+                      color: "primary",
+                    },
+                  ]}
+                />
+              </div>
             </SimpleSection>
           </Section>
 
@@ -104,9 +136,17 @@ const PreviewPageComponent: NextPage<{}> = ({}) => {
             imagePosition="right"
             url="https://images.pexels.com/photos/12548883/pexels-photo-12548883.jpeg"
           >
-            <Headline underline underlineAlign="left" className="mt-4">
-              <Text value="About us" />
-            </Headline>
+            <Headline
+              underline
+              underlineAlign="left"
+              className="mt-4"
+              value={[
+                {
+                  id: "non_primary_about us",
+                  value: "about us",
+                },
+              ]}
+            />
             <TabComponent />
           </Section>
         </div>
@@ -114,14 +154,37 @@ const PreviewPageComponent: NextPage<{}> = ({}) => {
         <div className="flex w-full flex-col bg-white px-[340px]">
           <Section
             key={Math.random()}
-            imagePosition="right"
+            imagePosition="left"
             url="https://images.pexels.com/photos/12548883/pexels-photo-12548883.jpeg"
           >
-            <Headline underline underlineAlign="left" className="mt-4">
-              <Text value="About us" />
-            </Headline>
-            <TabComponent />
+            <div className="mb-8 max-w-lg">
+              <Headline
+                underline
+                underlineAlign="left"
+                className=""
+                value={[
+                  {
+                    id: "What can we tell you",
+                    value: "What can we tell you",
+                  },
+                  {
+                    id: "about us",
+                    value: "about us",
+                    color: "primary",
+                  },
+                ]}
+              />
+            </div>
+            <Accordion />
           </Section>
+        </div>
+        <div className="mb-16 flex flex-col items-start px-[340px]">
+          <h1 className="mb-4 text-5xl capitalize">
+            Language Switch component
+          </h1>
+          <div className="flex items-center space-x-8">
+            <LanguageToggle />
+          </div>
         </div>
         <div className="flex w-full flex-col px-[340px]">
           <h1 className="mb-4 text-5xl capitalize">

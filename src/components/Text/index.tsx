@@ -6,17 +6,16 @@ interface Props {
   color?: "primary" | "secondary";
   marginBottom?: number;
   marginTop?: number;
-  
 }
 const Text: React.FC<Props> = React.memo(({ value, color }) => {
   return (
-    <p
+    <span
       className={cn({
         "text-primary": color === "primary",
       })}
     >
       {value}
-    </p>
+    </span>
   );
 });
 export default Text;
