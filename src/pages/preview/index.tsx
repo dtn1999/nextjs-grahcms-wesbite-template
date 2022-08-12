@@ -12,7 +12,7 @@ import Section from "@app/features/Section";
 import TabComponent from "@app/features/Tabs";
 import SimpleSection from "@app/features/SimpleSection";
 import Accordion from "@app/features/Accordion";
-import LanguageToggle from "@app/features/Toggle";
+import NavBar from "@app/components/Navigation";
 
 const PreviewPageComponent: NextPage<{}> = ({}) => {
   const [ref, { height }] = useMeasure<any>();
@@ -178,13 +178,12 @@ const PreviewPageComponent: NextPage<{}> = ({}) => {
             <Accordion />
           </Section>
         </div>
-        <div className="mb-16 flex flex-col items-start px-[340px]">
+        <div className="mb-16 flex flex-col items-start">
           <h1 className="mb-4 text-5xl capitalize">
-            Language Switch component
+            NavBar component
           </h1>
-          <div className="flex items-center space-x-8">
-            <LanguageToggle />
-          </div>
+            <NavBar />
+          
         </div>
         <div className="flex w-full flex-col px-[340px]">
           <h1 className="mb-4 text-5xl capitalize">
