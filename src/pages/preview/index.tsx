@@ -14,7 +14,7 @@ import SimpleSection from "@app/features/SimpleSection";
 import Accordion from "@app/features/Accordion";
 import NavBar from "@app/components/Navigation";
 import Carousel from "@app/features/Carousel";
-import { carouselSlides } from "@app/features/Carousel/dummy";
+import { carouselSlides, socialHandles } from "@app/features/Carousel/dummy";
 
 const PreviewPageComponent: NextPage<{}> = ({}) => {
   const [ref, { height }] = useMeasure<any>();
@@ -186,7 +186,7 @@ const PreviewPageComponent: NextPage<{}> = ({}) => {
 
         <div className="mb-16 flex flex-col items-start">
           <div style={{ height }} className="w-full">
-            <Carousel slides={carouselSlides} />
+            <Carousel slides={carouselSlides} socials={socialHandles} />
           </div>
         </div>
 
