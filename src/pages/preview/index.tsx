@@ -7,16 +7,10 @@ import Button from "@app/components/Button";
 import Headline from "@app/components/Headline";
 import Text from "@app/components/Text";
 import BlurringImage from "@app/components/BgImage/BlurringImage";
-import SectionImage from "@app/features/Section/SectionImage";
-import CountUp from "react-countup";
-import { BsChevronRight } from "react-icons/bs";
 
-import { AnimatePresence, motion } from "framer-motion";
-import Section from "@app/features/Section/Section";
-import SimpleSectionDescription from "@app/features/Section/SimpleSectionDescription";
-import TabsComponent from "@app/features/Tabs";
-import { Tab } from "@headlessui/react";
+import Section from "@app/features/Section";
 import TabComponent from "@app/features/Tabs";
+import SimpleSection from "@app/features/SimpleSection";
 
 const PreviewPageComponent: NextPage<{}> = ({}) => {
   const [ref, { height, width }] = useMeasure<any>();
@@ -90,19 +84,19 @@ const PreviewPageComponent: NextPage<{}> = ({}) => {
             imagePosition="right"
             url="https://images.pexels.com/photos/12548883/pexels-photo-12548883.jpeg"
           >
-            <SimpleSectionDescription>
+            <SimpleSection>
               <Headline underline underlineAlign="left" className="mt-4">
                 <Text value="About us" />
               </Headline>
-            </SimpleSectionDescription>
+            </SimpleSection>
           </Section>
           <Section url="https://images.pexels.com/photos/12604653/pexels-photo-12604653.jpeg">
-            <SimpleSectionDescription>
+            <SimpleSection>
               <Headline underline underlineAlign="left" className="mt-4">
                 <Text value="We Are Novo " />
                 <Text value="Creative Studio." color="primary" />
               </Headline>
-            </SimpleSectionDescription>
+            </SimpleSection>
           </Section>
 
           <Section
@@ -117,8 +111,7 @@ const PreviewPageComponent: NextPage<{}> = ({}) => {
           </Section>
         </div>
 
-
-        <div className="flex w-full flex-col bg-[#F0F0F0] px-[340px]">
+        <div className="flex w-full flex-col bg-white px-[340px]">
           <Section
             key={Math.random()}
             imagePosition="right"

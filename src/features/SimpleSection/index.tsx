@@ -6,13 +6,10 @@ import CountUp from "react-countup";
 import { BaseProps } from "@app/types";
 interface Props extends BaseProps {}
 
-
-const SimpleSectionDescription: React.FC<Props> = React.memo(({children}) => {
+const SimpleSection: React.FC<Props> = React.memo(({ children }) => {
   return (
     <React.Fragment>
-      <div className="max-w-xl">
-        {children}
-      </div>
+      <div className="max-w-xl">{children}</div>
       <div className="mt-4 mb-10">
         <Text value="The world without photography will be meaningless to us if there is no light and color, which opens up our minds and expresses passion." />
       </div>
@@ -47,4 +44,4 @@ const SimpleSectionDescription: React.FC<Props> = React.memo(({children}) => {
     </React.Fragment>
   );
 });
-export default SimpleSectionDescription;
+export default SimpleSection;

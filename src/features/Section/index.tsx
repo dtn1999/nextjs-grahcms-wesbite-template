@@ -1,12 +1,12 @@
 import React from "react";
 import cn from "classnames";
-import SectionImage from "./SectionImage";
 import Headline from "@app/components/Headline";
 import Text from "@app/components/Text";
 import CountUp from "react-countup";
 import { BsChevronRight } from "react-icons/bs";
 import { AnimatePresence, motion } from "framer-motion";
 import { BaseProps } from "@app/types";
+import SectionImage from "../SectionImg";
 
 interface Props extends Omit<BaseProps, "className"> {
   url: string;
@@ -35,7 +35,7 @@ const variants = {
 const Section: React.FC<Props> = React.memo(
   ({ url, imagePosition, children }) => {
     return (
-      <motion.section className="pt-8 pb-9">
+      <motion.section className="py-16 pb-11">
         <div
           className={cn({
             "flex w-full justify-between overflow-hidden items-start": true,
