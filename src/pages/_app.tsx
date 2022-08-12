@@ -1,6 +1,8 @@
 import { createHygraphClient, hygraphFetcher } from "@app/lib";
 import "@app/styles/globals.css";
-import request from "graphql-request";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 import type { AppContext, AppProps } from "next/app";
 import App from "next/app";
 import React from "react";

@@ -7,11 +7,19 @@ div#__next > div {
   font-family: "Montserrat", sans-serif;
 }
 
-.child {
-  flex: 2 0 21%; /* explanation below */
-  margin: 5px;
-  height: 100px;
-  background-color: blue;
+/*move swiper pagination on top to image */
+.swiper-pagination {
+  position: absolute;
+  text-align: center;
+  transition: 300ms opacity;
+  transform: translate3d(0, 0, 0);
+  z-index: 10;
+  display: flex;
+  width: fit-content !important;
+  height: fit-content !important;
+  right: 70px;
+  bottom: 16px !important;
+  left: auto !important;
 }
 
 @tailwind base;

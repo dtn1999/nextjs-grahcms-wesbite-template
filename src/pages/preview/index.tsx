@@ -184,7 +184,9 @@ const PreviewPageComponent: NextPage<{}> = ({}) => {
         </div>
 
         <div className="mb-16 flex flex-col items-start">
+          <div style={{height}} className="w-full">
           <Carousel />
+          </div>
         </div>
 
         <div className="flex w-full flex-col px-[340px]">
