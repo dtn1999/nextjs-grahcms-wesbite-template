@@ -2,7 +2,7 @@ import React from "react";
 import cn from "classnames";
 import { BaseProps } from "@app/types";
 
-interface Text {
+export interface TText {
   id: string;
   value: string;
   color?: "primary" | "secondary";
@@ -11,10 +11,11 @@ interface Text {
 interface Props extends BaseProps {
   underline?: boolean;
   underlineAlign?: "left" | "center";
-  value: Text[];
+  value: TText[];
 }
+
 const Headline: React.FC<Props> = React.memo(
-  ({ children, underline, underlineAlign, value = [] }) => {
+  ({ underline, underlineAlign, value = [] }) => {
     return (
       <h2
         className={cn({
@@ -38,19 +39,6 @@ const Headline: React.FC<Props> = React.memo(
             </span>
           ))}
         </p>
-        <div className="flex flex-wrap">
-          {React.Children.map(children, (child, index) => {
-            console.log(child);
-            return (
-              <>
-                {child}
-                {index !== React.Children.count(children) - 1 && (
-                  <span className="after:text-transparent after:content-['-']"></span>
-                )}
-              </>
-            );
-          })}
-        </div>
       </h2>
     );
   }

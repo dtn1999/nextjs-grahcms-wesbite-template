@@ -28,6 +28,9 @@ module.exports = {
       lineHeight: {
         11: "48px",
       },
+      width: {
+        17: "4.375rem",
+      },
     },
   },
   plugins: [],

@@ -15,4 +15,5 @@ const ComponentSwitcher: React.FC<Props> = React.memo(({typename, componentProps
 
   return <div className={cn("")}> index </div>;
 });
+
 export default ComponentSwitcher;

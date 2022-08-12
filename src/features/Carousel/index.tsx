@@ -1,26 +1,29 @@
-import React, { RefAttributes } from "react";
-import cn from "classnames";
-import { AnimatePresence, motion } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
 import BlurringImage from "@app/components/BgImage/BlurringImage";
-interface Props {}
-import { Swiper, SwiperSlide, SwiperProps } from "swiper/react";
-import SwiperCore, { Autoplay, Pagination, Navigation } from "swiper";
+import Button from "@app/components/Button";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, Navigation } from "swiper";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
-import { NavigationOptions, PaginationOptions } from "swiper/types";
+import { FaFacebookF, FaTiktok, FaTwitter, FaInstagram } from "react-icons/fa";
+import { PaginationOptions } from "swiper/types";
 
-const arr = [
-  "https://images.pexels.com/photos/977539/pexels-photo-977539.jpeg",
+import Headline, { TText } from "@app/components/Headline";
 
-  "https://images.pexels.com/photos/2170387/pexels-photo-2170387.jpeg",
+interface Props {
+  slides: TCarouselSlide[];
+}
 
-  "https://images.pexels.com/photos/908310/pexels-photo-908310.jpeg",
+interface Title {
+  id: string;
+  underline?: boolean;
+  underlineAlign?: "left" | "center";
+  value: TText[];
+}
 
-  "https://images.pexels.com/photos/1559086/pexels-photo-1559086.jpeg",
+import { carouselSlides, TCarouselSlide } from "./dummy";
 
-  "https://images.pexels.com/photos/2535859/pexels-photo-2535859.jpeg",
-];
-
-const Carousel: React.FC<Props> = React.memo(({}) => {
+const Carousel: React.FC<Props> = React.memo(({slides = []}) => {
   const navigationPrevRef = React.useRef(null);
   const navigationNextRef = React.useRef(null);
   const swiperRef = React.useRef<any>();
@@ -28,9 +31,12 @@ const Carousel: React.FC<Props> = React.memo(({}) => {
     clickable: true,
     renderBullet: function (idx, className) {
       const index = idx < 9 ? `0${idx + 1}` : `${idx + 1}`;
-      return `<span class="mr-5 font-medium text-lg bg-green-200">${index}</span>`;
+      console.log(className);
+      return `<span class=${className}>${index}</span>`;
     },
-    bulletActiveClass: "bg-yellow-500",
+    bulletClass: "bullet",
+    bulletActiveClass: "bg-primary",
+    horizontalClass: "pagination",
   };
   return (
     <div className="relative h-full w-full ">
@@ -39,45 +45,119 @@ const Carousel: React.FC<Props> = React.memo(({}) => {
         ref={swiperRef}
         centeredSlides={true}
         autoplay={{
-          delay: 2500,
+          delay: 8000,
           disableOnInteraction: false,
         }}
         pagination={pagination}
         modules={[Autoplay, Pagination, Navigation]}
         className="relative h-full w-full"
-        navigation={{
-          prevEl: navigationPrevRef.current
-            ? navigationPrevRef.current
-            : undefined,
-          nextEl: navigationNextRef.current
-            ? navigationNextRef.current
-            : undefined,
-        }}
-        onInit={(swiper: any) => {
-          swiper.params.navigation.prevEl = navigationPrevRef.current;
-          swiper.params.navigation.nextEl = navigationNextRef.current;
-          swiper.navigation.update();
-        }}
       >
-        {arr.map((item, index) => (
-          <SwiperSlide
-            key={item}
-            className="relative h-full w-full bg-yellow-300"
-          >
-            <BlurringImage
-              url={item}
-              objectPosition="center"
-              objectFit="cover"
-              layout="fill"
-            />
+        {slides.map((item, index) => (
+          <SwiperSlide key={item.url} className="relative h-full w-full">
+            {({ isActive }) => (
+              <div className="relative h-full w-full">
+                <BlurringImage
+                  url={item.url}
+                  objectPosition="center"
+                  objectFit="cover"
+                  layout="fill"
+                />
+                <div className="absolute inset-0  flex items-center justify-center bg-[rgba(0,0,0,0.5)]" />
+                <div className="absolute top-0 left-0 z-50 h-full w-full">
+                  <motion.div
+                    className="flex h-full w-full flex-col justify-end pb-28 pt-10"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                  >
+                    <motion.div
+                      key={Math.random()}
+                      transition={{
+                        staggerChildren: 2,
+                      }}
+                      className="mx-auto w-full max-w-[1140px] text-white"
+                    >
+                      <motion.div
+                        key={item.title.id}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 1.5 }}
+                        className="my-5 max-w-4xl text-4xl font-bold leading-11"
+                      >
+                        <Headline
+                          key={item.title.id}
+                          value={item.title.value}
+                          underline={item.title.underline}
+                          underlineAlign={item.title.underlineAlign}
+                        />
+                      </motion.div>
+                      <motion.p
+                        key={item.description}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 2 }}
+                        className="my-5 pr-[55%] text-base font-light leading-6"
+                      >
+                        {item.description}
+                      </motion.p>
+                      <motion.div
+                        key={Math.random()}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 2.5 }}
+                        className="mt-9 flex justify-start"
+                      >
+                        <Button variant="Outline">
+                          <a
+                            href="#"
+                            className="flex items-center space-x-1 text-xs font-medium uppercase text-white hover:text-black"
+                          >
+                            <span>read more</span>
+                            <BsChevronRight />
+                          </a>
+                        </Button>
+                      </motion.div>
+                    </motion.div>
+                  </motion.div>
+                </div>
+              </div>
+            )}
+
+            {/* black overlay */}
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="absolute bottom-5 right-5 z-50 mt-5 flex flex-row justify-between text-lg font-medium">
+      <div className="absolute inset-y-0 left-0 z-50 w-17">
+        <div className="flex h-full w-full items-center">
+          <div
+            className="flex w-full items-center justify-center text-white"
+            style={{ writingMode: "vertical-rl" }}
+          >
+            {[
+              { Icon: FaFacebookF, label: "facebook" },
+              { Icon: FaTwitter, label: "twitter" },
+              { Icon: FaInstagram, label: "instagram" },
+              { Icon: FaTiktok, label: "ticktock" },
+            ].map((item, index) => (
+              <div key={index} className=" flex items-center">
+                <span className="my-4 flex items-center justify-center">
+                  <span className="flex rotate-180">{item.label}</span>
+                  <span className="mt-2 -rotate-90">
+                    <item.Icon className="" />
+                  </span>
+                </span>
+                {index !== 3 && (
+                  <span className="h-1 w-1 rounded-full bg-primary" />
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className="absolute bottom-5 right-5 z-50 mt-5 flex flex-row justify-between text-xl font-medium text-white">
         <button
           aria-label="navigation previous slide"
           ref={navigationPrevRef}
-          className="mx-1 cursor-pointer"
+          className="mx-1 cursor-pointer hover:text-primary-dark"
           onClick={() => {
             if (swiperRef.current) {
               console.log(swiperRef.current.swiper.slidePrev());
@@ -94,7 +174,7 @@ const Carousel: React.FC<Props> = React.memo(({}) => {
               console.log(swiperRef.current.swiper.slideNext());
             }
           }}
-          className="mx-1 cursor-pointer"
+          className="mx-1 cursor-pointer hover:text-primary-dark"
         >
           <BsChevronRight />
         </button>
