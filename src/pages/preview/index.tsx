@@ -13,6 +13,7 @@ import TabComponent from "@app/features/Tabs";
 import SimpleSection from "@app/features/SimpleSection";
 import Accordion from "@app/features/Accordion";
 import NavBar from "@app/components/Navigation";
+import Carousel from "@app/features/Carousel";
 
 const PreviewPageComponent: NextPage<{}> = ({}) => {
   const [ref, { height }] = useMeasure<any>();
@@ -179,12 +180,13 @@ const PreviewPageComponent: NextPage<{}> = ({}) => {
           </Section>
         </div>
         <div className="mb-16 flex flex-col items-start">
-          <h1 className="mb-4 text-5xl capitalize">
-            NavBar component
-          </h1>
-            <NavBar />
-          
+          <NavBar />
         </div>
+
+        <div className="mb-16 flex flex-col items-start">
+          <Carousel />
+        </div>
+
         <div className="flex w-full flex-col px-[340px]">
           <h1 className="mb-4 text-5xl capitalize">
             Background Image component

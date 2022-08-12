@@ -16,7 +16,7 @@ interface Props
 }
 
 const Button: React.FC<Props> = React.memo(
-  ({ children, variant, disabled }) => {
+  ({ children, variant, disabled, className }) => {
     return (
       <div
         className={cn({
@@ -28,7 +28,7 @@ const Button: React.FC<Props> = React.memo(
             variant === "Solid",
           "opacity-50 cursor-not-allowed":
             disabled,
-        })}
+        }, className)}
       >
         {" "}
         {children}{" "}
