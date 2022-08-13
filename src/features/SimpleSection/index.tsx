@@ -2,7 +2,7 @@ import React from "react";
 import cn from "classnames";
 import Headline from "@app/components/Headline";
 import Text from "@app/components/Text";
-import CountUp from "react-countup";
+import CountUp from "@app/features/CountUp";
 import { BaseProps } from "@app/types";
 interface Props extends BaseProps {}
 

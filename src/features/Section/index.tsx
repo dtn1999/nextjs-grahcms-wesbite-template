@@ -17,7 +17,7 @@ const Section: React.FC<Props> = React.memo(
       <motion.section className="py-16 pb-11">
         <div
           className={cn({
-            "flex w-full justify-between overflow-hidden items-start": true,
+            "grid w-full grid-cols-2 overflow-hidden items-start": true,
           })}
         >
           <motion.div
@@ -27,7 +27,7 @@ const Section: React.FC<Props> = React.memo(
             viewport={{ once: false }}
             custom={imagePosition}
             className={cn({
-              "flex flex-col": true,
+              "flex px-4 pt-9": true,
               "order-first": !imagePosition || imagePosition === "left",
               "order-last justify-end": imagePosition === "right",
             })}
@@ -41,7 +41,7 @@ const Section: React.FC<Props> = React.memo(
             viewport={{ once: false }}
             custom={imagePosition}
             className={cn({
-              "flex flex-col justify-start max-w-xl w-full": true,
+              "flex flex-col justify-start w-full px-4 pt-9 mb-10": true,
             })}
           >
             {children}
