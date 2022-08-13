@@ -16,7 +16,6 @@ const NavigationControls: React.FC<Props> = React.memo(({}) => {
     swiper.slideNext();
   }, [swiper]);
 
-  console.log(swiper);
   return (
     <div className="absolute bottom-7 right-5 z-50 mt-5 flex flex-row justify-between text-xl font-medium text-white">
       <button

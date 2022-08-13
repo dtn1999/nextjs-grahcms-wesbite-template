@@ -1,10 +1,7 @@
 import React from "react";
 import type { NextPage } from "next";
 import { SWRConfig } from "swr";
-import Headline from "@app/components/Headline";
-import Text from "@app/components/Text";
-import Section from "@app/features/Section";
-import SimpleSection from "@app/features/SimpleSection";
+import { motion } from "framer-motion";
 
 const HomePageComponent: NextPage<any> = ({ fallback }) => {
   const isLoading = true;
@@ -22,16 +19,6 @@ const HomePageComponent: NextPage<any> = ({ fallback }) => {
           </span>{" "}
           file to remove the annoying spinner{" "}
         </p>
-        <Section
-          imagePosition="right"
-          url="https://images.pexels.com/photos/12548883/pexels-photo-12548883.jpeg"
-        >
-          <SimpleSection>
-            <Headline underline underlineAlign="left" className="mt-4">
-              <Text value="About us" />
-            </Headline>
-          </SimpleSection>
-        </Section>
       </div>
     </SWRConfig>
   );

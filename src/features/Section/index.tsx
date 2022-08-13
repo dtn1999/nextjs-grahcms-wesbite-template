@@ -1,36 +1,15 @@
 import React from "react";
 import cn from "classnames";
-import Headline from "@app/components/Headline";
-import Text from "@app/components/Text";
-import CountUp from "react-countup";
 import { BsChevronRight } from "react-icons/bs";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { BaseProps } from "@app/types";
 import SectionImage from "../SectionImg";
+import { slideLeftRight } from "src/animations";
 
 interface Props extends Omit<BaseProps, "className"> {
   url: string;
   imagePosition?: "left" | "right";
 }
-
-const variants = {
-  imageHidden: (imagePosition: "left" | "right") => ({
-    opacity: 0,
-    x: !imagePosition || imagePosition === "left" ? "-100%" : "100%",
-  }),
-  panelHidden: (imagePosition: "left" | "right") => ({
-    opacity: 0,
-    x: !imagePosition || imagePosition === "left" ? "100%" : "-100%",
-  }),
-  animate: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 0.7,
-      type: "tween",
-    },
-  },
-};
 
 const Section: React.FC<Props> = React.memo(
   ({ url, imagePosition, children }) => {
@@ -42,7 +21,7 @@ const Section: React.FC<Props> = React.memo(
           })}
         >
           <motion.div
-            variants={variants}
+            variants={slideLeftRight}
             initial="imageHidden"
             whileInView="animate"
             viewport={{ once: false }}
@@ -56,7 +35,7 @@ const Section: React.FC<Props> = React.memo(
             <SectionImage url={url} />
           </motion.div>
           <motion.div
-            variants={variants}
+            variants={slideLeftRight}
             initial="panelHidden"
             whileInView="animate"
             viewport={{ once: false }}

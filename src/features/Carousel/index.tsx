@@ -1,9 +1,9 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion, Target } from "framer-motion";
 import BlurringImage from "@app/components/BgImage/BlurringImage";
 import Button from "@app/components/Button";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, Navigation } from "swiper";
+import SwiperCore, { Autoplay, Pagination, Navigation } from "swiper";
 import { BsChevronRight } from "react-icons/bs";
 import { PaginationOptions } from "swiper/types";
 import NavigationControls from "./NavigationControls";
@@ -11,12 +11,16 @@ import Headline from "@app/components/Headline";
 
 import SocialsHandles from "../Socials";
 import { SocialHandle, TCarouselSlide } from "@app/types";
+import { container, fadeInOut } from "src/animations";
 
 interface Props {
   slides: TCarouselSlide[];
-  socials: SocialHandle[];
+  socials?: SocialHandle[];
 }
 
+// animation framer
+
+SwiperCore.use([Autoplay, Pagination, Navigation]);
 
 const Carousel: React.FC<Props> = React.memo(
   ({ slides = [], socials = [] }) => {
@@ -50,7 +54,6 @@ const Carousel: React.FC<Props> = React.memo(
             disableOnInteraction: false,
           }}
           pagination={pagination}
-          modules={[Autoplay, Pagination, Navigation]}
           className="relative h-full w-full"
         >
           {slides.map((item, index) => (
@@ -67,60 +70,49 @@ const Carousel: React.FC<Props> = React.memo(
                     layout="fill"
                   />
                   <div className="absolute top-0 left-0 z-50 h-full w-full bg-black/60">
-                    <motion.div
-                      className="flex h-full w-full flex-col justify-end pb-28 pt-10"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                    >
-                      <motion.div
-                        key={Math.random()}
-                        transition={{
-                          staggerChildren: 2,
-                        }}
-                        className="mx-auto w-full max-w-[1140px] text-white"
-                      >
+                    <div className="flex h-full w-full flex-col justify-end pb-28 pt-10">
+                      {isActive && (
                         <motion.div
-                          key={item.title.id}
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          transition={{ duration: 1.5 }}
-                          className="my-5 max-w-4xl text-4xl font-bold leading-11"
+                          key={item.url}
+                          variants={container}
+                          initial="hidden"
+                          animate="show"
+                          exit="hidden"
+                          className="mx-auto w-full max-w-[1140px] text-white"
                         >
-                          <Headline
-                            key={item.title.id}
-                            value={item.title.value}
-                            underline={item.title.underline}
-                            underlineAlign={item.title.underlineAlign}
-                          />
+                          <motion.div
+                            variants={fadeInOut}
+                            className="my-5 max-w-4xl text-4xl font-bold leading-11"
+                          >
+                            <Headline
+                              value={item.title.value}
+                              underline={item.title.underline}
+                              underlineAlign={item.title.underlineAlign}
+                            />
+                          </motion.div>
+                          <motion.p
+                            variants={fadeInOut}
+                            className="my-5 pr-[45%] text-xl font-light leading-6 tracking-widest"
+                          >
+                            {item.description}
+                          </motion.p>
+                          <motion.div
+                            variants={fadeInOut}
+                            className="mt-9 flex justify-start"
+                          >
+                            <Button variant="Outline">
+                              <a
+                                href="#"
+                                className="flex items-center space-x-1 text-xs font-medium uppercase text-white hover:text-black"
+                              >
+                                <span>{item.cta.label}</span>
+                                <BsChevronRight />
+                              </a>
+                            </Button>
+                          </motion.div>
                         </motion.div>
-                        <motion.p
-                          key={item.description}
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          transition={{ duration: 2 }}
-                          className="my-5 pr-[45%] text-xl font-light leading-6 tracking-widest"
-                        >
-                          {item.description}
-                        </motion.p>
-                        <motion.div
-                          key={Math.random()}
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          transition={{ duration: 2.5 }}
-                          className="mt-9 flex justify-start"
-                        >
-                          <Button variant="Outline">
-                            <a
-                              href="#"
-                              className="flex items-center space-x-1 text-xs font-medium uppercase text-white hover:text-black"
-                            >
-                              <span>{item.cta.label}</span>
-                              <BsChevronRight />
-                            </a>
-                          </Button>
-                        </motion.div>
-                      </motion.div>
-                    </motion.div>
+                      )}
+                    </div>
                   </div>
                 </div>
               )}

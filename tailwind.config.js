@@ -31,6 +31,26 @@ module.exports = {
       width: {
         17: "4.375rem",
       },
+      maxWidth: {
+        sm: "540px",
+        md: "720px",
+        lg: "960px",
+        xl: "1170px",
+        "1/2": "50%",
+      },
+      screens: {
+        sm: "576px",
+        // => @media (min-width: 640px) { ... }
+
+        md: "768px",
+        // => @media (min-width: 768px) { ... }
+
+        lg: "992px",
+        // => @media (min-width: 1024px) { ... }
+
+        xl: "1200px",
+        // => @media (min-width: 1280px) { ... }
+      },
     },
   },
   plugins: [],

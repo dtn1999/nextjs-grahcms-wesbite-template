@@ -17,6 +17,8 @@
     "baseUrl": ".",
     "paths": {
       "@app/lib": ["./src/lib"],
+      "@app/animations": ["./src/animations"],
+      "@app/animations/*": ["./src/animations/*"],
       "@app/lib/*": ["./src/lib/*"],
       "@app/requests-queries": ["./src/lib/requests/queries"],
       "@app/requests-queries/*": ["./src/lib/requests/queries/*"],
@@ -35,6 +37,11 @@
       "@app/utils/*": ["./src/utils/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/BgImage/Blu"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/components/BgImage/Blu"
+  ],
   "exclude": ["node_modules"]
 }

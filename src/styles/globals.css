@@ -7,14 +7,13 @@ div#__next > div {
   font-family: "Montserrat", sans-serif;
 }
 
-
 .pagination {
   display: flex;
   max-width: 1140px;
   margin-left: auto;
   margin-right: auto;
   right: 0;
-  justify-content: start;
+  justify-content: flex-start;
   bottom: 16px !important;
 }
 

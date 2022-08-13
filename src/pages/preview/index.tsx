@@ -15,6 +15,7 @@ import Accordion from "@app/features/Accordion";
 import NavBar from "@app/components/Navigation";
 import Carousel from "@app/features/Carousel";
 import { carouselSlides, socialHandles } from "@app/features/Carousel/dummy";
+import LanguageSwitch from "@app/features/Switch";
 
 const PreviewPageComponent: NextPage<{}> = ({}) => {
   const [ref, { height }] = useMeasure<any>();
@@ -189,7 +190,11 @@ const PreviewPageComponent: NextPage<{}> = ({}) => {
             <Carousel slides={carouselSlides} socials={socialHandles} />
           </div>
         </div>
-
+        <div className="fixed top-0 left-0 z-[9999] flex h-screen items-start justify-start">
+          <div className="mt-[170px] ml-[-11px]">
+            <LanguageSwitch />
+          </div>
+        </div>
         <div className="flex w-full flex-col px-[340px]">
           <h1 className="mb-4 text-5xl capitalize">
             Background Image component
