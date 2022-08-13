@@ -11,17 +11,20 @@ export interface TText {
 interface Props extends BaseProps {
   underline?: boolean;
   underlineAlign?: "left" | "center";
+  underlineColor?: "primary" | "secondary";
   value: TText[];
 }
 
 const Headline: React.FC<Props> = React.memo(
-  ({ underline, underlineAlign, value = [] }) => {
+  ({ underline, underlineAlign, value = [], underlineColor }) => {
     return (
       <h2
         className={cn({
           "text-5xl font-bold capitalize leading-11 ": true,
-          "after:block after:bg-black after:w-5 after:h-[1px] after:text-xs after:content-[' ']":
+          "after:block after:w-5 after:h-[1px] after:text-xs after:content-[' ']":
             underline,
+          "after:bg-black": !underline,
+          "after:bg-primary": underlineColor === "primary",
           "after:mx-auto after:mt-4": underlineAlign === "center",
           "after:mt-8": underlineAlign && underlineAlign === "left",
         })}
